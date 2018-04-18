@@ -18,3 +18,15 @@ let findMatches = function(word, towns) {
     return place.location.match(regex);
   });
 };
+
+// show matches
+let displayMatches = function() {
+  console.log(this.value);
+};
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+// add change event listener to search input
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
