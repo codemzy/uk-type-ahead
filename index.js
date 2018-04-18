@@ -23,11 +23,15 @@ let findMatches = function(word, towns) {
 let displayMatches = function() {
   const matchArray = findMatches(this.value, towns);
   const html = matchArray.map(function(place) {
+    // highlight matching element
+    const regex = new RegExp(this.value, 'gi');
+    const locationName = place.location.replace(regex, `<span class="hl">${this.value}</span>`);
+    // return item
     return `<li>
-      <span class="name">${place.location}</span>
+      <span class="name">${locationName}</span>
       <span class="population">${place.population}</span>
     </li>`;
-  });
+  }.bind(this));
   suggestions.innerHTML = html.join(''); // return the html array as a string
 };
 
